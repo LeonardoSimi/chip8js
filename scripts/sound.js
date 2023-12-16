@@ -1,8 +1,8 @@
 class Sound{
     constructor(){
-        const AudioContext = window.AudioContext;
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
 
-        this.audioCtx = new AudioContext;
+        this.audioCtx = new AudioContext();
         this.gain = this.audioCtx.createGain();
         this.finish = this.audioCtx.destination;
 

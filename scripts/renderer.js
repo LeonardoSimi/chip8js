@@ -37,6 +37,8 @@ class Renderer {
 
         this.display[pixelPosition] ^= 1; //toggle pixel to 0 or 1
                                           //if 0 pixel gets erased
+
+        console.log('setPixel func');
         return !this.display[pixelPosition]; //value to see if pixel was erased
     }
 
@@ -50,12 +52,12 @@ class Renderer {
         this.ctx.clearRect(0,0, this.canvas.width, this.canvas.height);
 
         for (let i =0; i < this.horizontalPixel * this.verticalPixels; i++){
-            let x = (i%this.horizontalPixel) * this.scale; //get horizontal pos
+            let x = (i % this.horizontalPixel) * this.scale; //get horizontal pos
             let y = Math.floor (i / this.horizontalPixel) * this.scale; //get vertical pos
 
             //for every this.display[i]==1 draw a pixel
             if (this.display[i]){
-                this.ctx.fillStyle = "black";
+                this.ctx.fillStyle = '#000';
 
                 //set pixel in correct position
                 this.ctx.fillRect(x,y, this.scale, this.scale);
@@ -63,7 +65,7 @@ class Renderer {
         }
     }
 
-    testRender(){
+    /*testRender(){
         console.log("started test render");
         this.setPixel(0,0);
         this.setPixel(5,2);
@@ -71,7 +73,7 @@ class Renderer {
         this.setPixel(7,20);
         this.setPixel(30,30);
         this.setPixel(1,1);
-    }
+    }*/
 
 }
 
