@@ -80,11 +80,11 @@ class CPU {
     cycle() {
         for (let i = 0; i < this.speed; i++) {
             if (!this.paused) {
-                let opcode = (this.memory[this.pc] << 8 | this.pc + 1); /*16 bit opcodes made by 2 8bit pieces
+                let opcode = (this.memory[this.pc] << 8 | this.memory[this.pc + 1]); /*16 bit opcodes made by 2 8bit pieces
                                                                           adding hex 0x00 to the right side of a 1 byte value
                                                                           ex. 0x10 into 0x10F0*/
                 this.executeInstruction(opcode);
-
+                console.log('paused: ' + this.paused);
             }
         }
         if (!this.paused) {
@@ -286,13 +286,13 @@ class CPU {
                 switch (opcode & 0xFF) {
 
                     case 0x9E:
-                        if (this.keys.pressedKeys(this.v[x])) {
+                        if (this.keys.keyPressed(this.v[x])) {
                             this.pc += 2;
                         }
                         break;
 
                     case 0xA1:
-                        if (!this.keys.pressedKeys(this.v[x])) {
+                        if (!this.keys.keyPressed(this.v[x])) {
                             this.pc += 2;
                         }
                         break;

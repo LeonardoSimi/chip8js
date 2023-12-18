@@ -14,7 +14,7 @@ class Sound{
         if (this.audioCtx && !this.oscillator) {
             this.oscillator = this.audioCtx.createOscillator();
 
-            this.oscillator.frequency.setValueAtTime(frequency || 440, this.audioCtx);
+            this.oscillator.frequency.setValueAtTime(frequency || 440, this.audioCtx.currentTime);
             this.oscillator.type = 'square';
 
             this.oscillator.connect(this.gain);

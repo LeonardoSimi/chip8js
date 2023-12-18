@@ -33,7 +33,7 @@ class Renderer {
 
         let pixelPosition = x + (y * this.horizontalPixel);
 
-        console.log('x= '+x + ' y= ' +y);
+        //console.log('x= '+x + ' y= ' +y);
 
         this.display[pixelPosition] ^= 1; //toggle pixel to 0 or 1
                                           //if 0 pixel gets erased
@@ -57,7 +57,7 @@ class Renderer {
 
             //for every this.display[i]==1 draw a pixel
             if (this.display[i]){
-                this.ctx.fillStyle = '#000';
+                this.ctx.fillStyle = "white";
 
                 //set pixel in correct position
                 this.ctx.fillRect(x,y, this.scale, this.scale);

@@ -19,7 +19,7 @@ class Keys {
             86: 0xF  // V
         }
 
-        this.pressedKeys = [];
+        this.keysPressed = [];
 
         this.onNextKeyPress = null;
 
@@ -28,19 +28,19 @@ class Keys {
         
     }
 
-    pressedKeys(keycode) {
-        return this.pressedKeys[keycode];
+    keyPressed(keyCode) {
+        return this.keysPressed[keyCode];
     }
 
     onKeyUp(event){
         let key = this.KEYMAP[event.which];
 
-        this.pressedKeys[key] = false;
+        this.keysPressed[key] = false;
     }
 
     onKeyDown(event) {
         let key = this.KEYMAP[event.which];
-        this.pressedKeys[key] = true;
+        this.keysPressed[key] = true;
 
         if (this.onNextKeyPress !== null && key) {
             this.onNextKeyPress(parseInt(key));
